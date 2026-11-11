@@ -76,7 +76,8 @@ for key, fn in SCR.items():
 
 shell_css = open(os.path.join(HERE, 'shell.css'), encoding='utf-8').read()
 shell_js = open(os.path.join(HERE, 'shell.js'), encoding='utf-8').read()
-open(os.path.join(OUT, 'app.css'), 'w', encoding='utf-8').write('\n'.join(imports) + '\n' + shell_css + '\n' + '\n'.join(css_all))
+theme_css = open(os.path.join(HERE, 'theme.css'), encoding='utf-8').read()
+open(os.path.join(OUT, 'app.css'), 'w', encoding='utf-8').write('\n'.join(imports) + '\n' + shell_css + '\n' + '\n'.join(css_all) + '\n' + theme_css)
 open(os.path.join(OUT, 'app.js'), 'w', encoding='utf-8').write(
     '(function(){\nconst EB=window.EB={screens:{}};\n' + '\n'.join(js_all) + '\n' + shell_js + '\n})();\n')
 cfg = {'forms': {}, 'catalog': json.load(open(os.path.join(REF, 'catalog.json'), encoding='utf-8'))}
